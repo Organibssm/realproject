@@ -7,11 +7,13 @@
 3. 아리소리 페이 확인
 4. 로그인(학생 본인 확인)
 5. 물건 리뷰
+---
     
 - 도메인
 1. student (grade, class, number, name)
 2. product (product name, price, count)
 3. point (name, points, spent)
+---
      
 - 페이지
 1. 시작화면 (로그인)
@@ -19,3 +21,4 @@
 3. 매점 물건 구매 건의창
 4. 리뷰창
 5. 아리소리페이 확인
+---
