@@ -7,9 +7,9 @@
     4. 로그인(학생 본인 확인)
     5. 물건 리뷰
     
-도메인 1. student
-     2. product
-     3. point
+도메인 1. student (grade, class, number, name)
+     2. product (product name, price, count)
+     3. point (name, points, spent)
      
 페이지 1. 시작화면 (로그인)
       2. 매점 재고 확인
