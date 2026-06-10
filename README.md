@@ -10,11 +10,14 @@
 ---
     
 - 도메인
-1. student (grade, class, number, name)
-2. product (product name, price, count)
+1. student (grade, class_num, number, total, name, password)
+2. product (prodname, price, count)
 3. point (name, points, spent)
+4. review (name, prodname, content)
+5. suggestion (name, prodname, content)
+6. payhistory (name, prodname, pay, paydate)
 ---
-     
+
 - 페이지
 1. 시작화면 (로그인)
 2. 매점 재고 확인
