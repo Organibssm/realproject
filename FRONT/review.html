@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품 리뷰 - 소마고 매점 온라인</title>
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.style.css">
+    <script src="main.script.js" defer></script>
+</head>
+<body>
+    <!-- 야간 하늘 배경 -->
+    <div class="night_sky">
+      <div class="stars"></div>
+      <div class="moon"></div>
+    </div>
+
+    <!-- 앱 컨테이너 -->
+    <div class="app_container">
+        <header class="main_header">
+            <div class="logo_area" onclick="location.href='main.html'" style="cursor: pointer;">
+                <img src="logo.jpg" class="logo">
+                <h1 class="logo_text">소마고 매점 <span>ONline</span></h1>
+            </div>
+            
+            <div class="header_right_area">
+                <button class="login_open_btn" id="loginOpenBtn"> 로그인</button>
+                <div class="header_actions">
+                    <div id="slingshot_container">
+                        <button class="theme_toggle" id="themeToggle" aria-label="다크 모드 토글">🌙</button>
+                        <div id="bat" title="드래그해서 버튼에 쏘세요!">🦇</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main_content">
+            
+            <!-- 제품 목록 화면 -->
+            <div id="productListView">
+                <div class="page_header">
+                    <h2 class="page_title">제품 리뷰</h2>
+                    <p class="page_subtitle">제품별 리뷰와 한줄평을 확인하고 직접 남겨보세요.</p>
+                </div>
+
+                <!-- 정렬 영역 -->
+                <div class="review_controls">
+                    <div class="filter_dropdown">
+                        <select class="category_filter" id="productSortFilter">
+                            <option value="default">기본순</option>
+                            <option value="reviews">리뷰 많은 순</option>
+                            <option value="upvotes">추천 많은 순</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 제품 그리드 -->
+                <div class="inventory_grid" id="productReviewGrid">
+                    <div class="inventory_card product_review_card" data-reviews="2" data-upvotes="3" data-name="영양제과_감자알칩_오리지널맛">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">영양제과_감자알칩_오리지널맛</h4>
+                            <span class="inv_item_price">700 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">2</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">3</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="1" data-upvotes="0" data-name="빙그레_꽃게랑_오리지널맛">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">빙그레_꽃게랑_오리지널맛</h4>
+                            <span class="inv_item_price">1,800 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">1</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="3" data-upvotes="5" data-name="해태_허니버터칩_오리지널맛">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">해태_허니버터칩_오리지널맛</h4>
+                            <span class="inv_item_price">1,700 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">3</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">5</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="2" data-upvotes="1" data-name="푸드킹_라멘뽀식이">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">푸드킹_라멘뽀식이</h4>
+                            <span class="inv_item_price">800 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">2</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">1</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="1" data-upvotes="2" data-name="라볶이스낵">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">라볶이스낵</h4>
+                            <span class="inv_item_price">700 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">1</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">2</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="0" data-upvotes="0" data-name="진한_옥수수_브이콘">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">진한_옥수수_브이콘</h4>
+                            <span class="inv_item_price">1,000 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">0</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="2" data-upvotes="4" data-name="오뚜기_뿌셔뿌셔_양념치킨맛">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">오뚜기_뿌셔뿌셔_양념치킨맛</h4>
+                            <span class="inv_item_price">1,200 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">2</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">4</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="3" data-upvotes="6" data-name="정성_쫀디기">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">정성_쫀디기</h4>
+                            <span class="inv_item_price">1,200 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">3</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">6</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="1" data-upvotes="1" data-name="동아오츠카_포카리스웨트">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">동아오츠카_포카리스웨트</h4>
+                            <span class="inv_item_price">1,500 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">1</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">1</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="2" data-upvotes="2" data-name="매일_피크닉_사과맛">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">매일_피크닉_사과맛</h4>
+                            <span class="inv_item_price">700 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">2</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">2</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="2" data-upvotes="3" data-name="빙그레_초코우유">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">빙그레_초코우유</h4>
+                            <span class="inv_item_price">800 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">2</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">3</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="3" data-upvotes="7" data-name="해태_부라보콘_초코맛">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">해태_부라보콘_초코맛</h4>
+                            <span class="inv_item_price">1,400 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">3</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">7</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="inventory_card product_review_card" data-reviews="3" data-upvotes="8" data-name="빙그레_메로나">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">빙그레_메로나</h4>
+                            <span class="inv_item_price">800 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">3</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">8</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="1" data-upvotes="2" data-name="이투오제과_치즈_사브레">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">이투오제과_치즈_사브레</h4>
+                            <span class="inv_item_price">2,000 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">1</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">2</span></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory_card product_review_card" data-reviews="3" data-upvotes="9" data-name="삼립_포켓몬빵_디그다_딸기_카스타드">
+                        <div class="inv_card_info">
+                            <h4 class="inv_item_name">삼립_포켓몬빵_디그다_딸기_카스타드</h4>
+                            <span class="inv_item_price">1,500 원</span>
+                        </div>
+                        <div class="product_stats">
+                            <div class="stat_item"><span class="stat_label">리뷰</span><span class="stat_val">3</span></div>
+                            <div class="stat_item"><span class="stat_label">추천</span><span class="stat_val">9</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 특정 제품의 리뷰 상세 화면 (초기엔 숨김) -->
+
+            <div id="reviewDetailView" style="display: none;">
+                <button class="back_btn" id="backToProductsBtn">← 뒤로 가기</button>
+                
+                <div class="detail_header">
+                    <h2 class="page_title" id="detailProductName">제품 이름</h2>
+                    <p class="page_subtitle">리뷰 <span id="detailReviewCount">0</span>개 · 총 추천 <span id="detailUpvoteCount">0</span>개</p>
+                </div>
+
+                <div class="review_list" id="detailReviewList">
+                    <!-- 상세 리뷰 카드들이 여기에 동적으로 추가됩니다 -->
+                </div>
+                
+                <div id="noDetailReview" style="display: none; text-align: center; padding: 40px; color: var(--text-muted);">
+                    아직 작성된 리뷰가 없습니다. 첫 리뷰를 작성해보세요!
+                </div>
+            </div>
+
+        </main>
+        
+        <footer class="main_footer">
+            <p>© 2026 소마고 매점 온라인. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- 리뷰 상세 화면일 때만 보이는 글쓰기 플로팅 버튼 -->
+    <button class="fab_btn" id="writeReviewBtn" title="리뷰 작성" style="display: none;">
+        <span class="fab_icon">+</span>
+    </button>
+
+    <!-- 제품 리뷰 쓰기 모달 다이얼로그 -->
+    <div id="writeReviewModal" class="modal_backdrop" aria-hidden="true">
+        <div class="modal_container write_modal">
+            <button class="modal_close_btn" id="writeReviewModalCloseBtn" aria-label="닫기">&times;</button>
+            <h3 class="modal_title" id="writeReviewModalTitle">리뷰 쓰기</h3>
+            
+            <form id="writeReviewForm" class="modal_form">
+                <div class="form_group">
+                    <label for="reviewTitle">한줄 요약 (제목)</label>
+                    <input type="text" id="reviewTitle" placeholder="맛이 어땠나요?" required>
+                </div>
+                
+                <div class="form_group">
+                    <label for="reviewContent">상세 리뷰 내용</label>
+                    <textarea id="reviewContent" rows="5" placeholder="솔직한 평가를 남겨주세요." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit_btn">리뷰 등록</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 로그인 모달 -->
+    <div id="loginModal" class="modal_backdrop" aria-hidden="true">
+        <div class="modal_container">
+            <button class="modal_close_btn" id="modalCloseBtn" aria-label="닫기">&times;</button>
+            
+            <div class="modal_tabs">
+                <button class="modal_tab_btn active" id="tabLoginBtn">로그인</button>
+                <button class="modal_tab_btn" id="tabSignupBtn">회원가입</button>
+            </div>
+            
+            <form id="loginForm" class="modal_form">
+                <div class="form_group">
+                    <label for="studentId">학번</label>
+                    <input type="text" id="studentId" placeholder="예: 3101" required>
+                </div>
+                
+                <div class="form_group signup_only" id="signupNameGroup">
+                    <label for="studentName">이름</label>
+                    <input type="text" id="studentName" placeholder="예: 홍길동">
+                </div>
+                
+                <div class="form_group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                
+                <div class="form_group checkbox_group signup_only" id="signupAgreeGroup">
+                    <div class="checkbox_wrapper">
+                        <input type="checkbox" id="privacyAgree">
+                        <label for="privacyAgree">개인정보 수집 및 이용 동의 (필수)</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit_btn" id="submitFormBtn">로그인</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

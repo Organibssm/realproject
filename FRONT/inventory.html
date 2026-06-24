@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>재고 확인 - 소마고 매점 온라인</title>
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.style.css">
+    <script src="main.script.js" defer></script>
+</head>
+<body>
+    <!-- 야간 하늘 배경 (다크모드용 레이어) -->
+    <div class="night_sky">
+      <div class="stars"></div>
+      <div class="moon"></div>
+    </div>
+
+    <!-- 전체 감싸는 메인 컨테이너 -->
+    <div class="app_container">
+        <!-- 헤더 영역 -->
+        <header class="main_header">
+            <div class="logo_area" onclick="location.href='main.html'" style="cursor: pointer;">
+                <img src="logo.jpg" class="logo">
+                <h1 class="logo_text">소마고 매점 <span>ONline</span></h1>
+            </div>
+            
+            <!-- 우측 로그인 버튼 및 테마 토글 영역 -->
+            <div class="header_right_area">
+                <button class="login_open_btn" id="loginOpenBtn"> 로그인</button>
+                <div class="header_actions">
+                    <div id="slingshot_container">
+                        <button class="theme_toggle" id="themeToggle" aria-label="다크 모드 토글">🌙</button>
+                        <div id="bat" title="드래그해서 버튼에 쏘세요!">🦇</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main_content">
+    <div class="page_header">
+
+        <div class="header_flex_container">
+            <img src="icons8-box.png" class="header_icon">
+
+            <div class="header_text_wrap">
+                <h2 class="page_title">실시간 재고 현황</h2>
+                <p class="page_subtitle">매점에 판매 중인 제품의 재고를 실시간으로 확인하세요.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+            <!-- 검색 및 필터 영역 -->
+            <div class="inventory_controls">
+                <div class="search_bar">
+                    <!-- 아이콘 들어갈 자리 빈 div -->
+                    <div class="search_icon"></div>
+                    <input type="text" placeholder="제품 이름을 검색하세요..." class="search_input" id="inventorySearch">
+                </div>
+                <div class="filter_dropdown">
+                    <select class="category_filter" id="inventoryFilter">
+                        <option value="all">전체 카테고리</option>
+                        <option value="snack">과자/스낵</option>
+                        <option value="drink">음료/유제품</option>
+                        <option value="food">음식/기타</option>
+                        <option value="icecream">아이스크림</option>
+                        <option value="bread">빵류</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 재고 리스트 -->
+            <div class="inventory_grid" id="inventoryGrid">
+                <!-- 아이템 카드 -->
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">영양제과 감자알칩 오리지널맛</h4>
+                        <span class="inv_item_price">700 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">12개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">빙그레 꽃게랑 오리지널맛</h4>
+                        <span class="inv_item_price">1,800 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">5개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">해태 허니버터칩 오리지널맛</h4>
+                        <span class="inv_item_price">1,700 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">8개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="food">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">푸드킹_라멘뽀식이</h4>
+                        <span class="inv_item_price">800 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count"> 품절 </span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">라볶이스낵</h4>
+                        <span class="inv_item_price">700 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">15개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">진한 옥수수 브이콘</h4>
+                        <span class="inv_item_price">1,000 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">7개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">오뚜기 뿌셔뿌셔 양념치킨맛</h4>
+                        <span class="inv_item_price">1,200 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">9개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">정성 쫀디기</h4>
+                        <span class="inv_item_price">1,200 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">10개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="drink">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">동아오츠카 포카리스웨트</h4>
+                        <span class="inv_item_price">1,500 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">4개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="drink">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">매일 피크닉 사과맛</h4>
+                        <span class="inv_item_price">700 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">18개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="drink">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">빙그레 초코우유</h4>
+                        <span class="inv_item_price">800 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">10개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="icecream">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">해태 부라보콘 초코맛</h4>
+                        <span class="inv_item_price">1,400 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">6개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="icecream">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">빙그레 메로나</h4>
+                        <span class="inv_item_price">800 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">14개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="icecream">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">빙그레 쿠앤크</h4>
+                        <span class="inv_item_price">800 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">11개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="icecream">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">롯데 월드콘 바닐라맛</h4>
+                        <span class="inv_item_price">1,400 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">9개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="icecream">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">롯데 구구콘 오리지널맛</h4>
+                        <span class="inv_item_price">1,400 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">5개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">이투오제과 치즈사브레</h4>
+                        <span class="inv_item_price">2,000 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">4개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">삼립 누네띠네</h4>
+                        <span class="inv_item_price">1,500 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">16개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="bread">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">삼립 오븐에구운 꿀밤파이</h4>
+                        <span class="inv_item_price">1,000 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">8개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="bread">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">삼립 포켓몬빵 디그다 딸기 카스타드</h4>
+                        <span class="inv_item_price">1,500 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">2개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="snack">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">삼립 빅땅콩샌드</h4>
+                        <span class="inv_item_price">1,400 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">5개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="food">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">삼립 젤리뽀</h4>
+                        <span class="inv_item_price">2,800 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">12개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="bread">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">삼립 순우유 연유요팡</h4>
+                        <span class="inv_item_price">1,400 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">7개</span>
+                    </div>
+                </div>
+
+                <div class="inventory_card" data-category="food">
+                    <div class="inv_card_info">
+                        <h4 class="inv_item_name">삼립 핫더블소시지</h4>
+                        <span class="inv_item_price">1,400 원</span>
+                    </div>
+                    <div class="inv_card_status">
+                        <span class="stock_label">현재 수량</span>
+                        <span class="stock_count">15개</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- 결과 없을 때 표시할 영역 -->
+            <div id="noResult" style="display: none; text-align: center; padding: 40px; color: var(--text-muted);">
+                해당하는 제품이 없습니다.             </div>
+        </main>
+        
+        <footer class="main_footer">
+            <p>© 2026 소마고 매점 온라인. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- 로그인 및 회원가입 모달 다이얼로그 (메인과 동일) -->
+    <div id="loginModal" class="modal_backdrop" aria-hidden="true">
+        <div class="modal_container">
+            <button class="modal_close_btn" id="modalCloseBtn" aria-label="닫기">&times;</button>
+            
+            <div class="modal_tabs">
+                <button class="modal_tab_btn active" id="tabLoginBtn">로그인</button>
+                <button class="modal_tab_btn" id="tabSignupBtn">회원가입</button>
+            </div>
+            
+            <form id="loginForm" class="modal_form">
+                <div class="form_group">
+                    <label for="studentId">학번</label>
+                    <input type="text" id="studentId" placeholder="예: 3101" required>
+                </div>
+                
+                <div class="form_group signup_only" id="signupNameGroup">
+                    <label for="studentName">이름</label>
+                    <input type="text" id="studentName" placeholder="예: 홍길동">
+                </div>
+                
+                <div class="form_group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                
+                <div class="form_group checkbox_group signup_only" id="signupAgreeGroup">
+                    <div class="checkbox_wrapper">
+                        <input type="checkbox" id="privacyAgree">
+                        <label for="privacyAgree">개인정보 수집 및 이용 동의 (필수)</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit_btn" id="submitFormBtn">로그인</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

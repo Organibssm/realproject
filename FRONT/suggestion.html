@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건의사항 - 소마고 매점 온라인</title>
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.style.css">
+    <script src="main.script.js" defer></script>
+</head>
+<body>
+    <!-- 야간 하늘 배경 (다크모드용 레이어) -->
+    <div class="night_sky">
+      <div class="stars"></div>
+      <div class="moon"></div>
+    </div>
+
+    <!-- 전체 감싸는 메인 컨테이너 -->
+    <div class="app_container">
+        <!-- 헤더 영역 -->
+        <header class="main_header">
+            <div class="logo_area" onclick="location.href='main.html'" style="cursor: pointer;">
+                <img src="logo.jpg" class="logo">
+                <h1 class="logo_text">소마고 매점 <span>ONline</span></h1>
+            </div>
+            
+            <!-- 우측 로그인 버튼 및 테마 토글 영역 -->
+            <div class="header_right_area">
+                <button class="login_open_btn" id="loginOpenBtn"> 로그인</button>
+                <div class="header_actions">
+                    <div id="slingshot_container">
+                        <button class="theme_toggle" id="themeToggle" aria-label="다크 모드 토글">🌙</button>
+                        <div id="bat" title="드래그해서 버튼에 쏘세요!">🦇</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 영역 -->
+        <main class="main_content">
+            <div class="page_header">
+                <h2 class="page_title">매점 건의사항</h2>
+                <p class="page_subtitle">매점에 대한 건의사항이나 도입을 원하는 제품을 자유롭게 남겨주세요.</p>
+            </div>
+
+            <!-- 필터 영역 -->
+            <div class="review_controls">
+                <div class="filter_dropdown">
+                    <select class="category_filter" id="reviewFilter">
+                        <option value="all">전체 보기</option>
+                        <option value="suggestion">매점건의사항</option>
+                        <option value="request">제품 추가요청</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 건의사항 리스트 영역 -->
+            <div class="review_list" id="reviewList">
+                <div class="review_card" data-category="request">
+                    <div class="review_header">
+                        <span class="review_category badge_request">제품 추가요청</span>
+                        <h4 class="review_title">제로 콜라도 들여와주세요 ㅠㅠ</h4>
+                        <span class="review_date">2026.06.16</span>
+                    </div>
+                    <div class="review_body">
+                        <p>다이어트 중인데 매점에 탄산음료는 전부 일반 제품밖에 없네요. 제로 콜라나 제로 사이다 같은 제로 칼로리 음료수도 꼭 들여와주시면 감사하겠습니다!!</p>
+                    </div>
+                </div>
+
+                <div class="review_card" data-category="suggestion">
+                    <div class="review_header">
+                        <span class="review_category badge_suggestion">매점건의사항</span>
+                        <h4 class="review_title">점심시간 결제 줄이 너무 길어요</h4>
+                        <span class="review_date">2026.06.15</span>
+                    </div>
+                    <div class="review_body">
+                        <p>점심시간에 매점에 사람이 너무 많이 몰려서 계산하는데 한참 기다려야 합니다.<br> 외국인 노동자를 추가로 고용했으면 좋겠어요.</p>
+                    </div>
+                </div>
+                
+                <div class="review_card" data-category="request">
+                    <div class="review_header">
+                        <span class="review_category badge_other">기타</span>
+                        <h4 class="review_title">빨리</h4>
+                        <span class="review_date">2026.06.15</span>
+                    </div>
+                    <div class="review_body">
+                        <p> 재고를 빨리 채워주세요</p>
+                    </div>
+                </div>
+
+                <div class="review_card" data-category="other">
+                    <div class="review_header">
+                        <span class="review_category badge_other">기타</span>
+                        <h4 class="review_title">락스</h4>
+                        <span class="review_date">2026.06.15</span>
+                    </div>
+                    <div class="review_body">
+                        <p>매점에 락스가 없는게 말이나 됩니까?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 결과 없을 때 표시할 영역 -->
+            <div id="noReviewResult" style="display: none; text-align: center; padding: 40px; color: var(--text-muted);">
+                해당하는 글이 없습니다.
+            </div>
+        </main>
+        
+        <footer class="main_footer">
+            <p>© 2026 소마고 매점 온라인. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- 글쓰기 플로팅 버튼 -->
+    <button class="fab_btn" id="writePostBtn" title="새 글 쓰기">
+        <span class="fab_icon">+</span>
+    </button>
+
+    <!-- 글쓰기 모달 다이얼로그 -->
+    <div id="writeModal" class="modal_backdrop" aria-hidden="true">
+        <div class="modal_container write_modal">
+            <button class="modal_close_btn" id="writeModalCloseBtn" aria-label="닫기">&times;</button>
+            <h3 class="modal_title">새 건의사항 쓰기</h3>
+            
+            <form id="writeForm" class="modal_form">
+                <div class="form_group">
+                    <label for="postCategory">분류</label>
+                    <select id="postCategory" required>
+                        <option value="" disabled selected>분류를 선택하세요</option>
+                        <option value="suggestion">매점건의사항</option>
+                        <option value="request">제품 추가요청</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+
+                <div class="form_group">
+                    <label for="postTitle">제목</label>
+                    <input type="text" id="postTitle" placeholder="제목을 입력하세요" required>
+                </div>
+                
+                <div class="form_group">
+                    <label for="postContent">내용</label>
+                    <textarea id="postContent" rows="6" placeholder="내용을 자세히 적어주세요" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit_btn" id="submitPostBtn">등록하기</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 로그인 및 회원가입 모달 다이얼로그 -->
+    <div id="loginModal" class="modal_backdrop" aria-hidden="true">
+        <div class="modal_container">
+            <button class="modal_close_btn" id="modalCloseBtn" aria-label="닫기">&times;</button>
+            
+            <div class="modal_tabs">
+                <button class="modal_tab_btn active" id="tabLoginBtn">로그인</button>
+                <button class="modal_tab_btn" id="tabSignupBtn">회원가입</button>
+            </div>
+            
+            <form id="loginForm" class="modal_form">
+                <div class="form_group">
+                    <label for="studentId">학번</label>
+                    <input type="text" id="studentId" placeholder="예: 3101" required>
+                </div>
+                
+                <div class="form_group signup_only" id="signupNameGroup">
+                    <label for="studentName">이름</label>
+                    <input type="text" id="studentName" placeholder="예: 홍길동">
+                </div>
+                
+                <div class="form_group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                
+                <div class="form_group checkbox_group signup_only" id="signupAgreeGroup">
+                    <div class="checkbox_wrapper">
+                        <input type="checkbox" id="privacyAgree">
+                        <label for="privacyAgree">개인정보 수집 및 이용 동의 (필수)</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit_btn" id="submitFormBtn">로그인</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

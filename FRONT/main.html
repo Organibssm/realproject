@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소마고 매점 온라인</title>
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.style.css">
+    <script src="main.script.js" defer></script>
+</head>
+<body>
+    <!-- 야간 하늘 배경 (다크모드용 레이어) -->
+    <div class="night_sky">
+      <div class="stars"></div>
+      <div class="moon"></div>
+    </div>
+
+    <!-- 전체 감싸는 메인 컨테이너 -->
+    <div class="app_container">
+        <!-- 헤더 영역 -->
+        <header class="main_header">
+            <div class="logo_area">
+                <img src="logo.jpg" class="logo">
+                <h1 class="logo_text">소마고 매점 <span>ONline</span></h1>
+            </div>
+            
+            <!-- 우측 로그인 버튼 및 테마 토글 영역 -->
+            <div class="header_right_area">
+                <button class="login_open_btn" id="loginOpenBtn"> 로그인</button>
+                <div class="header_actions">
+                    <div id="slingshot_container">
+                        <button class="theme_toggle" id="themeToggle" aria-label="다크 모드 토글">🌙</button>
+                        <div id="bat" title="드래그해서 버튼에 쏘세요!">🦇</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 영역 -->
+        <main class="main_content">
+            <div class="welcome_title_area">
+                <h1 class="welcome_title">소마고 매점 ONLINE 방문을 환영합니다</h1>
+                <p class="welcome_subtitle">실시간 서비스와 소비 내역 통계를 한눈에 확인하세요</p>
+            </div>
+
+            <!-- 지난 한 달간 지출 통계 배너 -->
+            <section class="stats_banner">
+                <div class="stats_info_side">
+                    <div class="card_icon_wrap">
+                            <img src="icons8-bar-chart-64.png">
+                        </div>
+                    <h3 class="stats_banner_title">지난 한 달간 소비 리포트</h3>
+                    
+                    <div class="total_spend_box">
+                        <span class="spend_label">총 지출액</span>
+                        <h2 class="total_spend_amount">38,000<span>원</span></h2>
+                    </div>
+
+                    <div class="spend_history_list">
+                        <h4>지출 내역</h4>
+                        <ul>
+                            <li>
+                                <span class="history_item"><span class="item_icon">🥤</span> 음료 (5종)</span>
+                                <span class="history_price">12,000원</span>
+                            </li>
+                            <li>
+                                <span class="history_item"><span class="item_icon">🍿</span> 과자 & 스낵 (5종)</span>
+                                <span class="history_price">13,500원</span>
+                            </li>
+                            <li>
+                                <span class="history_item"><span class="item_icon">🍜</span> 간단한 음식 (4종)</span>
+                                <span class="history_price">12,500원</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 원형 도형 그래프 (Donut Chart) 영역 -->
+                <div class="stats_chart_side">
+                    <h4>제품 종류 통계</h4>
+                    <div class="chart_wrapper">
+                        <!-- SVG Donut Chart -->
+                        <svg class="donut_chart" width="180" height="180" viewBox="0 0 180 180">
+                            <!-- 회전을 줘서 12시 방향부터 채워지도록 함 -->
+                            <g transform="rotate(-90 90 90)">
+                                <!-- 원 백그라운드 -->
+                                <circle cx="90" cy="90" r="50" class="chart_bg" stroke="#f1f5f9" stroke-width="16" fill="none" />
+                                
+                                <!-- 음료 (25%) -->
+                                <circle cx="90" cy="90" r="50" class="slice_drinks" stroke="#22d3ee" stroke-width="18" fill="none" 
+                                        stroke-dasharray="88.54 314.16" stroke-dashoffset="0" />
+                                
+                                <!-- 과자 (50%) -->
+                                <circle cx="90" cy="90" r="50" class="slice_snacks" stroke="#f87171" stroke-width="18" fill="none" 
+                                        stroke-dasharray="157.08 314.16" stroke-dashoffset="-88.54" />
+                                
+                                <!-- 음식 (25%) -->
+                                <circle cx="90" cy="90" r="50" class="slice_ramen" stroke="#fb9885" stroke-width="18" fill="none" 
+                                        stroke-dasharray="110.54 314.16" stroke-dashoffset="-245.62" />
+                            </g>
+                        </svg>
+                        
+                        <div class="chart_center_text">
+                            <span class="center_title">과자</span>
+                            <span class="center_value">14회</span>
+                        </div>
+                    </div>
+
+                    <!-- 범례 -->
+                    <div class="chart_legend">
+                        <div class="legend_item"><span class="dot drinks"></span> 음료 (25%)</div>
+                        <div class="legend_item"><span class="dot snacks"></span> 과자 (50%)</div>
+                        <div class="legend_item"><span class="dot food"></span> 음식 (25%)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 매점 중앙 서비스 메뉴 카드 영역 -->
+            <section class="services_section">
+                <h3 class="section_title">매점 서비스 바로가기</h3>
+                <div class="card_grid">
+                    <!-- 카드 1: 재고 현황 -->
+                    <div class="category_card" onclick="location.href='inventory.html'" style="cursor: pointer;">
+                        <div class="card_icon_wrap">
+                            <img src="icons8-box.png">
+                        </div>
+                        <div class="card_body">
+                            <h4 class="card_title">실시간 재고 현황</h4>
+                            <p class="card_desc">매점에 판매 중인 제품의 현황을 실시간으로 확인하여 편리하게 방문하세요.</p>
+                            <a href="inventory.html" class="card_btn">재고 현황 보러가기 →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 카드 2: 한줄평 -->
+                    <div class="category_card" onclick="location.href='review.html'" style="cursor: pointer;">
+                        <div class="card_icon_wrap">
+                            <img src="icons8-g.png">
+                        </div>
+                        
+                        <div class="card_body">
+                            <h4 class="card_title">리뷰&한줄평</h4>
+                            <p class="card_desc">친구들이 남긴 매점 간식의 솔직한 평점을 확인하고, 내가 맛본 간식 후기도 공유해 보세요.</p>
+                            <a href="review.html" class="card_btn">한줄평 보러가기 →</a>
+                        </div>
+                    </div>
+
+                    <!-- 카드 3: 건의사항 -->
+                    <div class="category_card" onclick="location.href='suggestion.html'" style="cursor: pointer;">
+                        <div class="card_icon_wrap">
+                            <img src="icons8-chat-64.png">
+                        </div>
+                        <div class="card_body">
+                            <h4 class="card_title">건의사항</h4>
+                            <p class="card_desc">매점에 새로 들어오길 원하는 신상 메뉴 건의나 건의사항을 매점 담당자에게 보냅니다.</p>
+                            <a href="suggestion.html" class="card_btn">건의사항 작성하러가기 →</a>
+                        </div>
+                    </div>
+
+                    <!-- 카드 4: 아리소리 -->
+                    <div class="category_card" onclick="location.href='arisori.html'" style="cursor: pointer;">
+                       <div class="card_icon_wrap">
+                            <img src="icons8-m.png">
+                        </div>
+                        <div class="card_body">
+                            <h4 class="card_title">아리소리 공지사항</h4>
+                            <p class="card_desc">아리소리페이/오카운트와도 연동해보세요.</p>
+                            <a href="arisori.html" class="card_btn">공지사항 보러가기 →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="main_footer">
+            <p>© 2026 소마고 매점 온라인. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- 로그인 및 회원가입 모달 다이얼로그 -->
+    <div id="loginModal" class="modal_backdrop" aria-hidden="true">
+        <div class="modal_container">
+            <button class="modal_close_btn" id="modalCloseBtn" aria-label="닫기">&times;</button>
+            
+            <div class="modal_tabs">
+                <button class="modal_tab_btn active" id="tabLoginBtn">로그인</button>
+                <button class="modal_tab_btn" id="tabSignupBtn">회원가입</button>
+            </div>
+            
+            <form id="loginForm" class="modal_form">
+                <!-- 학번 입력 -->
+                <div class="form_group">
+                    <label for="studentId">학번</label>
+                    <input type="text" id="studentId" placeholder="예: 3101" required>
+                </div>
+                
+                <!-- 이름 입력 (회원가입 전용, 기본 숨김) -->
+                <div class="form_group signup_only" id="signupNameGroup">
+                    <label for="studentName">이름</label>
+                    <input type="text" id="studentName" placeholder="예: 홍길동">
+                </div>
+                
+                <!-- 비밀번호 입력 -->
+                <div class="form_group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                
+                <!-- 개인정보 동의 (회원가입 전용, 기본 숨김) -->
+                <div class="form_group checkbox_group signup_only" id="signupAgreeGroup">
+                    <div class="checkbox_wrapper">
+                        <input type="checkbox" id="privacyAgree">
+                        <label for="privacyAgree">개인정보 수집 및 이용 동의 (필수)</label>
+                    </div>
+                </div>
+                
+                <!-- 제출 버튼 -->
+                <button type="submit" class="submit_btn" id="submitFormBtn">로그인</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
